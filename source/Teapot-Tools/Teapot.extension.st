@@ -50,6 +50,27 @@ Teapot >> gtInspectorDynamicRoutesIn: composite [
 ]
 
 { #category : #'*Teapot-Tools' }
+Teapot >> inspectionDynamicRoutes: aBuilder [
+	<inspectorPresentationOrder: 0 title: 'Dynamic routes'>
+
+	| routeList |
+	routeList := aBuilder newList
+		items: dynamicRouter routes; 
+		display: [:each | each printString ];
+		contextMenu: [ 
+			aBuilder newMenu
+				addItem: [ :item |
+							item
+								name: 'Remove route' translated;
+								action: [ self removeDynamicRoute: routeList selectedItem ] ];
+				addItem: [ :item |
+							item
+								name: 'Remove all' translated;
+								action: [ self removeAllDynamicRoutes ] ] ].
+		^ routeList
+]
+
+{ #category : #'*Teapot-Tools' }
 Teapot >> removeAfterFilter: aFilter [
 
 	compositeRouter afterFilters remove: aFilter

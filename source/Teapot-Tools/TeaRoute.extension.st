@@ -16,3 +16,14 @@ TeaRoute >> gtInspectorRouteIn: composite [
 				teaspoon onHttpResultDo: [ :result | presentation selection: result ].
 				teaspoon buildWithSpec ]
 ]
+
+{ #category : #'*Teapot-Tools' }
+TeaRoute >> inspectionItems: aBuilder [
+	<inspectorPresentationOrder: 80 title: 'Teaspoon'>
+	
+	(aBuilder instantiate: Teaspoon)
+			method: requestMatcher methodMatcher asString
+				url: requestMatcher urlPattern asTeaspoonPath
+				port: port.
+	"TODO: onHttpResultDo: [ :result | presentation selection: result ]."
+]

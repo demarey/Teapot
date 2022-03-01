@@ -3,7 +3,7 @@ I provide a graphical interface for quickly testing and excesising routes. Right
 "
 Class {
 	#name : #Teaspoon,
-	#superclass : #ComposableModel,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'urlInput',
 		'contentTypeDropList',
@@ -117,7 +117,7 @@ Teaspoon >> initializePresenter [
 Teaspoon >> initializeWidgets [
 	methodDropList := self newMethodDropList.
 	urlInput := self newTextInput autoAccept: true; yourself.
-	requestBody := TeaRequestBodyTabs new.
+	requestBody := TeaRequestBodyPresenter new.
 	contentTypeLabel := self newLabel label: 'Content Type'; yourself.
 	contentTypeDropList := self newContentTypeDropList.
 	execButton := self newButton label: 'Execute request'; yourself.
